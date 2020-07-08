@@ -1,21 +1,32 @@
-let breakCounter = 0;
+//document.getElementById ("startTimer").addEventListener ("click", startTimer);
+document.getElementById("button").addEventListener("click", startTimer, false);
 
-function startTime() {
-  setTimeout(userAlert, 1000);
-}
+let minutes = 20;
+let seconds = "00";
 
-function userAlert() {
+function startTimer() {
 
-  breakCounter += 1
-  console.log(breakCounter); //this is just to check my repetition counter is working during creation, delete once project is finished
+  const minutesInterval = setInterval(minutesTimer, 60000);
+  const secondsInterval = setInterval(secondsTimer, 1000);
 
-  if (breakCounter < 2){
-   alert('Stop working & take a 5 minute break, you earned it!');
- }
-  else if (breakCounter = 2) {
-    alert('Take a 10 minute break!');
+  document.getElementById('minutes').innerHTML = minutes - 1;
+  document.getElementById('seconds').innerHTML = 59;
+
+
+  function minutesTimer() {
+    minutes = minutes - 1;
+    document.getElementById('minutes').innerHTML = minutes;
+    console.log(minutes);
   }
-  else if (breakCounter > 3) {
-    breakCounter = 0;
+
+  function secondsTimer() {
+    seconds = seconds - 1;
+    document.getElementById('seconds').innerHTML = seconds;
+    console.log(seconds);
+
   }
+  if (seconds <= 0) {
+    seconds = 60;
+  }
+
 }
